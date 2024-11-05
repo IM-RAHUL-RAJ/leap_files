@@ -1,0 +1,38 @@
+version: '3.8'
+
+services:
+  angular-app:
+    image: leap2024artifact.jfrog.io/fse1-docker/front-rahul:1.0
+    ports:
+      - "4200:4200"
+    depends_on:
+      - fmts-nodejs
+      - spring-app
+    network_mode: "host"
+
+
+  fmts-nodejs:
+    image: leap2024artifact.jfrog.io/fse1-docker/fmts-rahul:1.0
+    ports:
+      - "3000:3000"
+    depends_on:
+      - spring-app
+    network_mode: "host"
+
+  mid-nodejs:
+    image: leap2024artifact.jfrog.io/fse1-docker/mid-rahul:1.0
+    ports:
+      - "4000:4000"
+    depends_on:
+      - spring-app
+    network_mode: "host"
+
+  spring-app:
+    image: leap2024artifact.jfrog.io/fse1-docker/back-rahul:1.2
+    ports:
+      - "8080:8080"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:oracle:thin:@orcl.cp8g424og328.ap-south-1.rds.amazonaws.com:1521/orcl
+      SPRING_DATASOURCE_USERNAME: admin
+      SPRING_DATASOURCE_PASSWORD: tiger123
+    network_mode: "host"
