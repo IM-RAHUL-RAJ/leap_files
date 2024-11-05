@@ -1,0 +1,5 @@
+docker build -t image_name:image_tag .
+
+docker run -d -p 4200:4200 image_name:image_tag 
+
+
