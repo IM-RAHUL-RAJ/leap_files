@@ -2,4 +2,14 @@ docker build -t image_name:image_tag .
 
 docker run -d -p 4200:4200 image_name:image_tag 
 
+see running container -- docker ps
 
+see stopped containers  --  docker ps -a
+
+stop running container (getting error for port already occupied) --
+docker stop container_id (take the container id from -- docker ps/ docker ps -a)
+
+see docker images --  docker images
+
+
+see container logs -- docker logs container_id(take container_id from docker ps)
